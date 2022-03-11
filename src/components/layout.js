@@ -1,52 +1,50 @@
-/**
- * Layout component that queries for data
- * with Gatsby's useStaticQuery component
- *
- * See: https://www.gatsbyjs.com/docs/use-static-query/
- */
-
-import * as React from "react"
+import React, {useState} from "react"
+import { Link } from "gatsby"
+import ctl from "@netlify/classnames-template-literals"
 import PropTypes from "prop-types"
-import { useStaticQuery, graphql } from "gatsby"
 
 import Header from "./header"
-import "./layout.css"
+import Footer from "./footer"
 
 const Layout = ({ children }) => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `)
+  const [openMenu, setOpenMenu] = useState(false);
 
   return (
-    <>
-      <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
-      <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `0 1.0875rem 1.45rem`,
-        }}
-      >
-        <main>{children}</main>
-        <footer
-          style={{
-            marginTop: `2rem`,
-          }}
-        >
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.com">Gatsby</a>
-        </footer>
-      </div>
-    </>
+    <div className={headerStyle}>
+      <Header openMenu={openMenu} setOpenMenu={setOpenMenu} />
+          <div className={pageWrapStyle}>
+            {openMenu ? (
+              <nav className={menuWrapStyle}>
+                <ul >
+                  <li><Link to="/my_work">💻 My Work</Link></li>
+                  <li><Link to="/about_me">👧🏽 About Me</Link></li>
+                  <li><Link to="/contact_me">📞 Get Talking</Link></li>
+                </ul>
+              </nav>) : (
+                <main>{children}</main>
+              )}
+          </div>
+      <Footer/>
+    </div>
   )
 }
+
+const headerStyle = ctl(`
+  min-h-[100vh] 
+  flex flex-col
+`)
+const pageWrapStyle = ctl(`
+  border-x-[1px]
+  border-gm-border-grey
+  mx-[100px]
+  py-10
+  flex-grow
+`)
+const menuWrapStyle= ctl(`
+ menu-nav
+ text-right
+ pr-[80px]
+`)
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,

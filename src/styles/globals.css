@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@500;700&family=Raleway:wght@400;500;700;900&display=swap');
+
+body{
+    font-family: 'Raleway', sans-serif;
+    color: #23240D;
+}
+.welcome-text{
+    font-family: 'Manrope', sans-serif;
+}
+.menu-nav ul li{
+    @apply xl:text-[56px] lg:text-[44px] md:text-[40px] text-[32px];
+    @apply mb-[21px];
+    @apply font-[600];
+    @apply hover:tracking-wider;
+    @apply transition-all;
+    @apply duration-300;
+    @apply  animate-pop-out;
+}

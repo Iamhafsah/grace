@@ -1,42 +1,64 @@
-import * as React from "react"
-import PropTypes from "prop-types"
+import React from "react"
 import { Link } from "gatsby"
+import ctl from "@netlify/classnames-template-literals"
+import PropTypes from "prop-types"
+import Logo from '../images/icons/nav/logo.svg'
+import MenuBar from '../images/icons/nav/menu.svg'
+import CloseIcon from '../images/icons/nav/close.svg'
 
-const Header = ({ siteTitle }) => (
-  <header
-    style={{
-      background: `rebeccapurple`,
-      marginBottom: `1.45rem`,
-    }}
-  >
-    <div
-      style={{
-        margin: `0 auto`,
-        maxWidth: 960,
-        padding: `1.45rem 1.0875rem`,
-      }}
-    >
-      <h1 style={{ margin: 0 }}>
-        <Link
-          to="/"
-          style={{
-            color: `white`,
-            textDecoration: `none`,
-          }}
-        >
-          {siteTitle}
-        </Link>
-      </h1>
-    </div>
-  </header>
+
+const Header = ({openMenu, setOpenMenu}) => {
+  return(
+    <header className={headerStyle}>
+      <nav>
+      <ul className={ulStyle}>
+        <li className={logoWrapStyle}>
+          <Link to="/">
+            <Logo/>
+          </Link>
+          Grace Oisamoje
+        </li>
+
+        <li onClick={()=> setOpenMenu(!openMenu)} className={menuIconsWrapStyle}>
+          {!openMenu ? <MenuBar/> : <CloseIcon/>}
+        </li>
+
+      </ul>
+      </nav>
+    </header>
 )
-
-Header.propTypes = {
-  siteTitle: PropTypes.string,
 }
 
-Header.defaultProps = {
-  siteTitle: ``,
-}
+const headerStyle = ctl(`
+  border-b-[1px]
+  border-gm-border-grey
+  px-[100px]
+`)
+
+const ulStyle = ctl(`
+  flex
+  justify-between
+  items-center
+  py-6
+  border-x-[1px]
+  border-gm-border-grey
+  px-[40px]
+`)
+
+const logoWrapStyle = ctl(`
+  flex
+  items-center
+  uppercase
+  text-[12px]
+  text-gm-logo
+  font-bold
+  tracking-[0.12em]
+`)
+const menuIconsWrapStyle = ctl(`
+  cursor-pointer
+  flex flex-col
+  items-center
+`)
+
 
 export default Header
