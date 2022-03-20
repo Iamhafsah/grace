@@ -30,7 +30,7 @@ const ContactPage = () => {
             <p className={contactItemStyle}>
                 <span className={contactEmojiStyle}>🌐</span> 
                 <Line/> 
-                <p className={contactItemStyle}><LinkedIn/><Behance/><Twitter/></p> 
+                <span className={contactItemStyle}><LinkedIn/><Behance/><Twitter/></span> 
             </p>
           </div>
 
