@@ -12,12 +12,12 @@ const ContactPage = () => {
   return (
       <div className={pageWrapStyle}>
           <div className={topPartWrapperStyle}>
-            <h1 className={boldTextStyle}>Get in touch -  Let&apos;s discuss opportunities</h1>
+            <h1 className={boldTextStyle}>Get in touch – Let&apos;s discuss opportunities</h1>
 
             <p className={contactItemStyle}>
                 <span className={contactEmojiStyle}>📞</span> 
                 <Line/> 
-                <span>(587) 966-6007</span>
+                <a href='tel:(587) 966-6007'>(587) 966-6007</a>
             </p>
 
             <p className={contactItemStyle}>
@@ -43,12 +43,13 @@ const pageWrapStyle = ctl(`
     px-[80px]
 `)
 const topPartWrapperStyle = ctl(`
-    mb-[200px]
+    mb-[100px]
 `)
 const boldTextStyle = ctl(`
-    text-[56px]
+    xl:text-[56px]
+    text-[40px]
     font-[700]
-    w-[619px]
+    lg:w-[619px]
     mb-6 mt-[150px]
     leading-snug
 `)
