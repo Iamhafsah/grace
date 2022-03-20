@@ -8,16 +8,6 @@ import Home from "../components/pages/Home"
 const IndexPage = () => (
   <Layout>
     <Seo title="Home" description="product designer in Ontario Canada" />
-    
-    {/* <StaticImage
-      src="../images/gatsby-astronaut.png"
-      width={300}
-      quality={95}
-      formats={["auto", "webp", "avif"]}
-      alt="A Gatsby astronaut"
-      style={{ marginBottom: `1.45rem` }}
-    /> */}
-
     <Home/>
   </Layout>
 )

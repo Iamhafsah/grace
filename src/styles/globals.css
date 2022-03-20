@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@500;700&family=Raleway:wght@400;500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@500;700&family=Raleway:wght@400;500;600;700;900&display=swap');
 
 body{
     font-family: 'Raleway', sans-serif;
@@ -19,4 +19,35 @@ body{
     @apply transition-all;
     @apply duration-300;
     @apply  animate-pop-out;
+}
+.scroll-rotate{
+    animation: rotate 8s infinite linear ;
+}
+@keyframes rotate {
+    from{transform: rotate(0deg); }
+    to{transform: rotate(360deg);}
+}
+@keyframes fade-in {
+    from{opacity: .3; }
+    to{opacity: 1;}
+}
+.work-title {
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke-color: #6E6E60;
+}
+.work-text-wrap:hover .work-title2{
+    animation: fade-in 2s ease-in-out ;
+}
+.about-page a {
+    text-decoration: underline;
+}
+.about-article p b{
+    @apply text-gm-black;
+}
+.about-article p{
+    @apply mb-6;
+    @apply text-[18px];
+    @apply font-[400];
+    @apply leading-[1.7];
 }
