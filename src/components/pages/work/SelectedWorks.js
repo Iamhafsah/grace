@@ -20,7 +20,7 @@ const SelectedWorks = () => {
                     <p className={imageTitleStyle}>web app, mobile app, & landing page website</p>
                 
                     <StaticImage
-                    src="../../images/sana-header.png"
+                    src="../../../images/sana-header.png"
                     alt="sana header image"
                     width={450}
                     height={250}
@@ -40,7 +40,7 @@ const SelectedWorks = () => {
                     <p className={imageTitleStyle}>ui-ux case study</p>
                 
                     <StaticImage
-                    src="../../images/parcel-dash-header.png"
+                    src="../../../images/parcel-dash-header.png"
                     alt="parcel-dash header image"
                     width={450}
                     height={250}
@@ -60,7 +60,7 @@ const SelectedWorks = () => {
                     <p className={imageTitleStyle}>landing page website & dashboard</p>
                 
                     <StaticImage
-                    src="../../images/wp-care-header.png"
+                    src="../../../images/wp-care-header.png"
                     alt="wp-care header image"
                     width={450}
                     height={250}
