@@ -62,7 +62,7 @@ const AboutPage = () => {
 
 const pageWrapStyle = ctl(`
   about-page
-  flex justify-center
+  flex justify-center flex-col lg:flex-row
   px-[80px]
   xl:gap-[116px]
   gap-[58px]
