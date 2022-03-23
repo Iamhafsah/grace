@@ -12,8 +12,8 @@ module.exports = {
         "gm-border-grey": "#ADA49B",
       },
       fontFamily: {
-        display: ["Manrope', sans-serif"],
-        sans: ["Raleway', sans-serif"],
+        display: ["Manrope, sans-serif"],
+        sans: ["Raleway, sans-serif"],
       },
       keyframes:{
         'pop-out':{

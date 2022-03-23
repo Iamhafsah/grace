@@ -9,7 +9,7 @@ import RighArrow from '../../images/icons/right-arrow.svg'
 const AboutPage = () => {
   return (
     <div className={pageWrapStyle}>
-        {/* <div>
+        <div>
           <StaticImage
           src='../../images/headshot.png'
           height={295}
@@ -55,7 +55,7 @@ const AboutPage = () => {
           <p><b>I am passionate about sharing information,</b> and I'm building a Youtube community via <a href='https://www.youtube.com/channel/UCh1j1VokaKJ01AobJ7YbJNg'>The Nook,</a> where I help people realize their creative potentials. <b>I also give back by volunteering</b> at <a href='https://steeringforgreatness.org/'>Steering for Greatness</a> and through social impact initiatives at <a href='https://gallery.mailchimp.com/a4f41985066e73f1b4dce89d4/files/90594cf6-ea36-46b8-a3b3-03520898b633/The_Joy_of_Christmas_Lola_.pdf?mc_cid=527c641d68&mc_eid=cbcfe10f92'>Boriah.</a></p>
 
           <p>I love travelling, trying out new cuisines, and having deep conversations in my free time.</p>
-        </article> */}
+        </article>
     </div>
   )
 }
