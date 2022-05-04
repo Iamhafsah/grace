@@ -10,8 +10,13 @@ const Works = ({ data }) => {
   const {
     title,
     background,
-    headerImage
+    headerImage,
+    role,
+    coreObjectives
   } = data.contentfulWorks
+
+  const projectRole = Object.values(role).map(item => (<p className={roleTextStyle}>{item}</p>))
+  const objectives = coreObjectives && Object.values(coreObjectives).map(item => (<li className="list-disc mb-2 ml-5">{item}</li>))
 
   return (
     <Layout>
@@ -28,16 +33,35 @@ const Works = ({ data }) => {
         <GatsbyImage
           image={headerImage.gatsbyImageData}
           className={headerImageStyle}
-          
+          alt="header image"
         />
 
-        <article className={articleStyle}>
-          <h1 className={articleHeadingStyle}>Background</h1>
-          <div
-            className="work-background"
-            dangerouslySetInnerHTML={{ __html: background.background }}
-          ></div>
-        </article>
+        <section className={articleWrapStyle}>
+          <article>
+            <h1 className={headingStyle}>Background</h1>
+            <div
+              className="work-background"
+              dangerouslySetInnerHTML={{ __html: background.background }}
+            ></div>
+          </article>
+
+          <div>
+            <h1 className={headingStyle}>My Role</h1>
+            
+            <div className="flex gap-5">{projectRole}</div>
+          </div>
+          
+          {
+            coreObjectives && (
+              <div>
+                <h1 className={headingStyle}>Core Objectives</h1>
+                <ul>
+                  {objectives}
+                </ul>
+              </div>
+            )
+          }
+        </section>
       </div>
       </Layout>
   )
@@ -60,6 +84,10 @@ export const pageQuery = graphql`
         _1
         _2
         _3
+      }
+      role {
+        _1
+        _2
       }
       imageAboveWayForward {
         gatsbyImageData(placeholder: BLURRED, quality: 100, formats: WEBP)
@@ -113,22 +141,28 @@ const backStyle = ctl(`
   underline 
   font-semibold 
 `)
-const articleStyle = ctl(`
+const articleWrapStyle = ctl(`
+  xl:max-w-[712px]
   md:max-w-[80%] 
   max-w-[85%] 
-  mx-auto mt-12
-  xl:max-w-[712px]
+  mx-auto
 `)
 const headerImageStyle = ctl(`
   flex 
   justify-center 
   mx-14 
-  h-[75vh] 
+  xl:h-[75vh] 
   mt-[50px]
 `)
-const articleHeadingStyle = ctl(`
+const headingStyle = ctl(`
   mb-[22px] 
   text-[28px] 
   font-semibold 
   text-gm-black 
+  mt-12
+`)
+const roleTextStyle = ctl(`
+  bg-[#C9C9C4]
+  p-[10px]
+  rounded-[3.5px]
 `)
