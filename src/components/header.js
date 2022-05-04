@@ -1,7 +1,6 @@
 import React from "react"
 import { Link } from "gatsby"
 import ctl from "@netlify/classnames-template-literals"
-import PropTypes from "prop-types"
 import Logo from '../images/icons/nav/logo.svg'
 import MenuBar from '../images/icons/nav/menu.svg'
 import CloseIcon from '../images/icons/nav/close.svg'
