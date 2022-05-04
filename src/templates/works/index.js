@@ -148,10 +148,9 @@ const articleWrapStyle = ctl(`
   mx-auto
 `)
 const headerImageStyle = ctl(`
-  flex 
-  justify-center 
   mx-14 
   xl:h-[75vh] 
+  xl:w-[92%]
   mt-[50px]
 `)
 const headingStyle = ctl(`
