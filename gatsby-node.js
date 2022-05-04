@@ -20,12 +20,12 @@ exports.createPages = async ({ graphql, actions }) => {
   `)
 
   const workPageTemplate = path.resolve(
-    "./src/templates/works.js"
+    "./src/templates/works/index.js"
   )
 
   allWorks.forEach(work => {
     createPage({
-      path: work.slug,
+      path: `my_work/${work.slug}`,
       component: workPageTemplate,
       context:{
           slug: work.slug

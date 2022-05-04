@@ -52,3 +52,7 @@ body{
     @apply font-[400];
     @apply leading-[1.7];
 }
+.work-background p{
+    @apply mb-6;
+    @apply text-gm-logo;
+}

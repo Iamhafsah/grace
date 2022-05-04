@@ -1,7 +1,7 @@
 import React from 'react'
 import ctl from '@netlify/classnames-template-literals'
 import { graphql, useStaticQuery, Link } from "gatsby"
-import { GatsbyImage, StaticImage, getImage } from 'gatsby-plugin-image'
+import { GatsbyImage } from 'gatsby-plugin-image'
 
 
 
@@ -9,12 +9,12 @@ const SelectedWorks = () => {
 
     const works = useStaticQuery(graphql`
         {
-            allContentfulWorks {
+            allContentfulWorks(sort: {fields: createdAt}) {
                 nodes {
                     title
                     slug
                     headerImage {
-                    gatsbyImageData(formats: WEBP, placeholder: BLURRED)
+                    gatsbyImageData(formats: WEBP, placeholder: BLURRED, quality: 100)
                     }
                     workScope
                 }
@@ -25,22 +25,24 @@ const SelectedWorks = () => {
     const work =  works.allContentfulWorks.nodes
     
     const allWorks = work.map((item, index) => (
-        <Link className={workTextWrapStyle} to={`/${item.slug}`} >
-        <div>
-            <h1 className={numberStyle}>0 {index + 1}</h1>
-            <p className={workTitleStyle}>{item.title}</p>
-            <p className={workTitleStyle2}>{item.title}</p>
+        <div className={workTextWrapStyle}>
+        <Link  to={`/my_work/${item.slug}`} >
+            <div>
+                <h1 className={numberStyle}>0 {index + 1}</h1>
+                <p className={workTitleStyle}>{item.title}</p>
+                <p className={workTitleStyle2}>{item.title}</p>
+            </div>
+            
+            <div className={workDetailsStyle}>
+                <p className={imageTitleStyle}>{item.workScope}</p>
+                <GatsbyImage 
+                image={item.headerImage.gatsbyImageData}
+                className={workImageStyle}
+                alt={ `${item.title} header image`}
+                />
+            </div>
+        </Link>
         </div>
-        
-        <div className={workDetailsStyle}>
-            <p className={imageTitleStyle}>{item.workScope}</p>
-            <GatsbyImage 
-            image={item.headerImage.gatsbyImageData}
-            className={workImageStyle}
-            alt={ `${item.title} header image`}
-            />
-        </div>
-    </Link>
     ))
 
     return (
@@ -72,6 +74,8 @@ const workTextWrapStyle = ctl(`
     cursor-pointer
     group
     relative
+    last:border-none
+    last:mb-[220px]
 `)
 const numberStyle = ctl(`
     text-[12px]
