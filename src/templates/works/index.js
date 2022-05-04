@@ -15,8 +15,8 @@ const Works = ({ data }) => {
     coreObjectives
   } = data.contentfulWorks
 
-  const projectRole = Object.values(role).map(item => (<p className={roleTextStyle}>{item}</p>))
-  const objectives = coreObjectives && Object.values(coreObjectives).map(item => (<li className="list-disc mb-2 ml-5">{item}</li>))
+  const projectRole = Object.values(role).map(item => (<p key={item} className={roleTextStyle}>{item}</p>))
+  const objectives = coreObjectives && Object.values(coreObjectives).map(item => (<li key={item} className="list-disc mb-2 ml-5">{item}</li>))
 
   return (
     <Layout>
