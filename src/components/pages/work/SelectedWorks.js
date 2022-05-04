@@ -1,76 +1,55 @@
 import React from 'react'
 import ctl from '@netlify/classnames-template-literals'
-import { StaticImage } from 'gatsby-plugin-image'
+import { graphql, useStaticQuery, Link } from "gatsby"
+import { GatsbyImage, StaticImage, getImage } from 'gatsby-plugin-image'
+
 
 
 const SelectedWorks = () => {
-  return (
-    <section className={sectionStyle}>
-        <h2 className={headingStyle}>Selected Work</h2>
 
-        <section>
-            <div className={workTextWrapStyle}>
-                <div>
-                    <h1 className={numberStyle}>01</h1>
-                    <p className={workTitleStyle}>Sana Transfer</p>
-                    <p className={workTitleStyle2}>Sana Transfer</p>
-                </div>
-                
-                <div className={workDetailsStyle}>
-                    <p className={imageTitleStyle}>web app, mobile app, & landing page website</p>
-                
-                    <StaticImage
-                    src="../../../images/sana-header.png"
-                    alt="sana header image"
-                    width={450}
-                    height={250}
-                    className={workImageStyle}
-                    />
-                </div>
-            </div>
+    const works = useStaticQuery(graphql`
+        {
+            allContentfulWorks {
+                nodes {
+                    title
+                    slug
+                    headerImage {
+                    gatsbyImageData(formats: WEBP, placeholder: BLURRED)
+                    }
+                    workScope
+                }
+            }
+        }
+    `)
 
-            <div className={workTextWrapStyle}>
-                <div>
-                    <h1 className={numberStyle}>02</h1>
-                    <p className={workTitleStyle}>Parcel Dash</p>
-                    <p className={workTitleStyle2}>Parcel Dash</p>
-                </div>
-               
-                <div className={workDetailsStyle}>
-                    <p className={imageTitleStyle}>ui-ux case study</p>
-                
-                    <StaticImage
-                    src="../../../images/parcel-dash-header.png"
-                    alt="parcel-dash header image"
-                    width={450}
-                    height={250}
-                    className={workImageStyle}
-                    />
-                </div>
-            </div>
+    const work =  works.allContentfulWorks.nodes
+    
+    const allWorks = work.map((item, index) => (
+        <Link className={workTextWrapStyle} to={`/${item.slug}`} >
+        <div>
+            <h1 className={numberStyle}>0 {index + 1}</h1>
+            <p className={workTitleStyle}>{item.title}</p>
+            <p className={workTitleStyle2}>{item.title}</p>
+        </div>
+        
+        <div className={workDetailsStyle}>
+            <p className={imageTitleStyle}>{item.workScope}</p>
+            <GatsbyImage 
+            image={item.headerImage.gatsbyImageData}
+            className={workImageStyle}
+            alt={ `${item.title} header image`}
+            />
+        </div>
+    </Link>
+    ))
 
-            <div className={`${workTextWrapStyle} border-none mb-[220px]`}>
-                <div>
-                    <h1 className={numberStyle}>03</h1>
-                    <p className={workTitleStyle}>WPCare Lab</p>
-                    <p className={workTitleStyle2}>WPCare Lab</p>
-                </div>
+    return (
+        <section className={sectionStyle}>
+            <h2 className={headingStyle}>Selected Work</h2>
 
-                <div className={workDetailsStyle}>
-                    <p className={imageTitleStyle}>landing page website & dashboard</p>
-                
-                    <StaticImage
-                    src="../../../images/wp-care-header.png"
-                    alt="wp-care header image"
-                    width={450}
-                    height={250}
-                    className={workImageStyle}
-                    />
-                </div>
-            </div>
+            {allWorks}
         </section>
-    </section>
-  )
+    )
 }
 
 const sectionStyle = ctl(`
@@ -132,7 +111,8 @@ const workDetailsStyle = ctl(`
     transition duration-[1s] ease
 `)
 const workImageStyle = ctl(`
-    w-[35vw] xl:w-auto
+    w-[35vw] lg:w-[30vw] 2xl:w-[25vw]
+    h-[150px] md:h-[200px] xl:h-[250px]
 `)
 
 export default SelectedWorks

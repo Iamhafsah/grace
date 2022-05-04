@@ -7,7 +7,7 @@ const Works = ({ data }) => {
     title,
     background,
     headerImage
-  } = data.works
+  } = data.contentfulWorks
 
   return (
       <div className="md:max-w-[70%] mx-auto pt-14 single-post">
